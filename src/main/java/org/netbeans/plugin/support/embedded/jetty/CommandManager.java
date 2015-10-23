@@ -143,9 +143,10 @@ class CommandManager extends AbstractHandler implements LifeCycle.Listener {
         if (serverConfig.isEnabled("jsf")) {
             new ModuleActivator.JSF().configServer(managerServer);
         }
-        if (userDefinedServer == null && serverConfig.isEnabled("cdi")) {
+/*        if (userDefinedServer == null && serverConfig.isEnabled("cdi")) {
             new ModuleActivator.WeldCDI().configServer(managerServer);
         }
+*/        
     }
 
     public static Server createServer() {
@@ -160,9 +161,10 @@ class CommandManager extends AbstractHandler implements LifeCycle.Listener {
     }
 
     public static boolean isDevelopmentMode() {
-        System.out.println("dev-mode=" + Paths.get(Utils.getServerConfigDir(), DEVELOPMENT_MODE_XML_FILE));
-        return Files.exists(Paths.get(Utils.getServerConfigDir(), DEVELOPMENT_MODE_XML_FILE));
+        //System.out.println("dev-mode=" + Paths.get(Utils.getServerConfigDir(), DEVELOPMENT_MODE_XML_FILE));
+        //return Files.exists(Paths.get(Utils.getServerConfigDir(), DEVELOPMENT_MODE_XML_FILE));
         //return new File("./" + Utils.SERVER_PROJECT_XML_FILE).exists();
+        return true;
     }
 
 /*    protected static void loadServerProperties(boolean b) {

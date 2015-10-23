@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Valery
+ * @author V. Shyshkin
  */
 public class Copier {
 
@@ -70,15 +70,19 @@ public class Copier {
 
     /**
      * Copies the source file of the object to a target file. The method doesn't
-     * throw an exception. Instead it returns the {@code null} value.<br/>
+     * throw an exception. Instead it returns the {@code null} value.
+     * <p> 
      * The target file must be a directory. If not then the method returns
-     * {@code null}.<br/>
-     * If the target file doesn't exist then it will be created. <br>
+     * {@code null}.
+     * </p>
+     * <p>
+     * If the target file doesn't exist then it will be created. 
+     * </p>
      * If the source file is a directory then it's content will be copied (all
      * entries are copied).
-     *
-     * @param targetDir
-     * @return
+     * 
+     * @param targetDir a target directory to copy to
+     * @return a copied file 
      */
     public File copyTo(File targetDir) {
         File result = null;
@@ -121,22 +125,31 @@ public class Copier {
 
     /**
      * Copies the source file of the object to a target file. The method doesn't
-     * throw an exception. Instead it returns the {@code null} value.<br/>
+     * throw an exception. Instead it returns the {@code null} value.
      * The target file must be a directory. If not then the method returns
-     * {@code null}.<br/>
-     * If the target file doesn't exist then it will be created. <br>
+     * {@code null}.
+     * <p>
+     * If the target file doesn't exist then it will be created. 
+     * </p>
+     * <p>
      * If the source file is a directory then it's content will be copied (all
-     * entries are copied).<br/>
+     * entries are copied).
+     * </p>
+     * <p>
      * If the source file is a directory then the content of the directory will
      * be copied (all entries are copied) to a subdirectory named
-     * {@code newName} of the target directory.<br/>
+     * {@code newName} of the target directory.
+     * </p>
+     * <p>
      * If the source file is not a directory it will be copied to the target
      * directory with a new name that is specified by the parameter
      * {@code newName}. If the new name is the same as the old name then the
-     * file will be replaced. <br/>
+     * file will be replaced. 
+     * </p>
      *
-     * @param targetDir
-     * @return
+     * @param targetDir a target directory to copy to
+     * @param newName a new file name
+     * @return a copied file
      */
     public File copyTo(File targetDir, String... newName) {
 
@@ -178,9 +191,9 @@ public class Copier {
     /**
      * Deletes the source file. If the source file is a directory then all the
      * entries of the source file and the directory itself will be deleted.
-     * <br/>
+     * 
      * The method doesn't throw an exception. Instead it returns the boolean
-     * {@code false} value.<br/>
+     * {@code false} value.
      *
      * @return the deleted file or {@code null}
      */
@@ -201,19 +214,22 @@ public class Copier {
 
     /**
      * Deletes the file or directory specified by path relative to the source
-     * file. If the source file is not a directory then the method returns
+     * file. 
+     * If the source file is not a directory then the method returns
      * (#code null}.
-     * <br/>
+     * <p>
      * The parameter {@code subPath} specifies the position of the file to be
-     * deleted relative to the source file.<br/>
+     * deleted relative to the source file.
+     * </P>
+     * <p>
+     * 
      * If the file to be deleted doesn't exists then the method returns
      * {@code null}.
-     * <br/>
+     * <p>
      * The method doesn't throw an exception. Instead it returns the boolean
-     * {@code false} value.<br/>
-     * If {
-     *
-     * @coe subPatn == "/"} then the method behaves as the {@link #delete() }.
+     * {@code false} value.
+     * <p>
+     * If {@literal subPatn == "/"} then the method behaves as the {@link #delete() }.
      *
      * @param subPath the path of the file to be deleted relative to the source
      * file. if subPatn == "/" then the method works as the {@link #delete() }.
@@ -243,12 +259,13 @@ public class Copier {
 
     /**
      * Clears the content of the source file. The method doesn't throw an
-     * exception. Instead it returns the {@code null} value.<br/>
+     * exception. Instead it returns the {@code null} value.
      * If the source file is a directory then all the entries of the source file
      * will be deleted.
-     * <br/>
+     * <p>
      * If the source file is not a directory then the method does nothing and
-     * returns {@code null}.<br/>
+     * returns {@code null}.
+     * </p>
      *
      * @return the deleted file or {@code null}
      */
@@ -733,7 +750,7 @@ public class Copier {
         /**
          * Extracts a file (not directory) from a specified zip archive.
          *
-         * @param zipFile
+         * @param zipFile an archive file to extract the specified entry
          * @param zipEntry a string than represents a zip entry relative to the
          * root of {@literal  zipFile}. For example? if a zip file is a
          * {@literal war} archive then {@literal  "WEB-INF/jetty-web.xml"}.

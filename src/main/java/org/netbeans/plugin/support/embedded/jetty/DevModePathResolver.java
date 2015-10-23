@@ -43,6 +43,20 @@ public class DevModePathResolver {
         return result;
     }
     
+    public static Properties getServerInstanceProperties() {
+        Properties props = new Properties();
+        Path target = getTmpWebAppsDir();
+        if (target == null) {
+            return props;
+        }
+        Path propsPath = target.resolve("server-instance.properties");
+
+        if (Files.exists(propsPath)) {
+            props = Utils.loadProperties(propsPath.toFile());
+        }
+        return props;
+    }
+    
     protected boolean isResolved() {
         String path = ctx.getWar();
         if ( ctx.getContextPath() == null) {
@@ -68,7 +82,7 @@ public class DevModePathResolver {
         return props;
     }
     
-    private Path getTmpWebAppsDir() {
+    private static Path getTmpWebAppsDir() {
         Path serverDir = Paths.get(System.getProperty("user.dir"));
         String root = serverDir.getRoot().toString().replaceAll(":", "_");
         if (root.startsWith("/")) {

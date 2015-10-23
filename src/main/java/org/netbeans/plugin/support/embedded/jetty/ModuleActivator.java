@@ -36,7 +36,7 @@ public interface ModuleActivator {
         }
 
     }//class Annotations
-    public static class WeldCDI implements ModuleActivator {
+/*    public static class WeldCDI implements ModuleActivator {
 
         @Override
         public void configServer(Server server) {
@@ -52,6 +52,7 @@ public interface ModuleActivator {
                     "org.embedded.ide.jetty.WebNbCdiConfig");            
         }
     }//class WeldCDI    
+*/    
     public static class JSF implements ModuleActivator {
 
         @Override

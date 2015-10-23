@@ -75,7 +75,7 @@ public class Utils {
 
     public static final String ANTI_LOCK_PROP_NAME = "antiResourceLocking";
 
-    public static final String SERVER_CONFIG_FOLDER = "nbdeployment";
+    //public static final String SERVER_CONFIG_FOLDER = "nbdeployment";
     public static final String SERVER_PROJECT_FOLDER = "server-project";
     public static final String INSTANCE_PROPERTIES_PATH = "src/main/resources/" + INSTANCE_PROPERTIES_FILE;
 
@@ -113,11 +113,11 @@ public class Utils {
         return System.getProperty("user.dir");
     }
 
-    public static String getServerConfigDir() {
+/*    public static String getServerConfigDir() {
         Path p = Paths.get(System.getProperty("user.dir")).getParent();
         return Paths.get(p.toString(), SERVER_CONFIG_FOLDER).toString();
     }
-
+*/
     public static String getServerProjectDir() {
         Path p = Paths.get(System.getProperty("user.dir")).getParent();
         return Paths.get(p.toString(), SERVER_PROJECT_FOLDER).toString();
@@ -374,6 +374,9 @@ public class Utils {
     }
 
     public static Properties getContextPropertiesByBuildDir(String warPath) {
+        if ( warPath == null  ) {
+            return new Properties();
+        }
         File f = new File(warPath + "/WEB-INF/jetty-web.xml");
         System.out.println("^^^ getContextProperties 1 " + warPath);
         if (!f.exists()) {
@@ -487,27 +490,6 @@ public class Utils {
         }
         return props;
 
-    }
-    /**
-     * Only for development mode
-     * @return 
-     */
-    public static Properties loadInstanceProperties() {
-        File f = new File("./" + SERVER_CONFIG_FOLDER + "/" + INSTANCE_PROPERTIES_FILE);
-        if ( ! f.exists()) {
-            return null;
-        }
-        Properties props = new Properties();
-
-        try (FileInputStream fis = new FileInputStream(f)) {
-            props.load(fis);
-            fis.close();
-        } catch (IOException ioe) {
-            LOG.log(Level.INFO, "loadInstanceProperties()", ioe);
-            return null;
-
-        }
-        return props;
     }
 
     public static Properties loadServerProperties(boolean developmentMode) {

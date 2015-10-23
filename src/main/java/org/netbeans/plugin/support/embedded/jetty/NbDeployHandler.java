@@ -138,7 +138,7 @@ public class NbDeployHandler extends AbstractHandler implements LifeCycle.Listen
 
     /**
      *
-     * @return null if the method {@link createHotDeploymentServer}
+     * @return null if 
      */
     public HotDeployer getHotDeployer() {
         return HotDeployer.create();
@@ -813,8 +813,8 @@ public class NbDeployHandler extends AbstractHandler implements LifeCycle.Listen
     /**
      * {@literal Deployment mode} only.
      *
-     * @param contextPath
-     * @param webDir
+     * @param contextPath the context path of the web app to be deployed
+     * @param webDir the directory of the web application to be deployed
      */
     protected void deploy(String contextPath, String webDir) {
         System.out.println("deploy started for cp=" + contextPath + "; webDir=" + webDir);
@@ -883,7 +883,7 @@ public class NbDeployHandler extends AbstractHandler implements LifeCycle.Listen
     /**
      * {@literal Deployment mode} only.
      *
-     * @param ctx
+     * @param ctx contextPath the context path of the web app to be deployed
      */
     protected void deploy(WebAppContext ctx) {
         System.out.println("deploy(WebAppContext) started for cp=" + ctx.getContextPath() + "; webDir=" + ctx.getWar());
@@ -1007,10 +1007,7 @@ public class NbDeployHandler extends AbstractHandler implements LifeCycle.Listen
                 if (c instanceof ServerConnector) {
                     int programPort = ((ServerConnector) c).getPort();
                     
-                    Properties props = Utils.loadInstanceProperties();
-                    if ( props == null ) {
-                        break;
-                    }
+                    Properties props = DevModePathResolver.getServerInstanceProperties();
                     String port = props.getProperty(HTTP_PORT_PROP);
                     if ( port == null ) {
                         break;
@@ -1165,9 +1162,6 @@ public class NbDeployHandler extends AbstractHandler implements LifeCycle.Listen
         }
     }
 
-    /**
-     * @param url
-     */
     protected void deployRegisteredWebapps(URL url) {
         System.out.println("---- deployRegisteredWebapps--- url=" + url);
 
@@ -1331,9 +1325,9 @@ public class NbDeployHandler extends AbstractHandler implements LifeCycle.Listen
      */
 
     /**
-     * Only in {@code development mode}
+     * Only in {@literal development mode}
      *
-     * @param webapp
+     * @param webapp an instance of the WebAppContext class
      */
     protected void configWebapp(WebAppContext webapp) {
 
