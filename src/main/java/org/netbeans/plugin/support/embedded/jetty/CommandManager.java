@@ -45,7 +45,7 @@ import static org.netbeans.plugin.support.embedded.jetty.Utils.DEVELOPMENT_MODE_
 import static org.netbeans.plugin.support.embedded.jetty.Utils.isBuildOfMavenProject;
 
 /**
- *
+ * DE
  * @author V. Shyshkin
  */
 class CommandManager extends AbstractHandler implements LifeCycle.Listener {
